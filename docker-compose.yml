@@ -1,0 +1,19 @@
+services:
+  vram-calculator:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: vram-calculator
+    ports:
+      - "8501:8501"
+    volumes:
+      # Mount LM Studio models directory (read-only) for file scanning
+      - ${LMSTUDIO_MODELS_DIR:-~/.lmstudio/models}:/root/.lmstudio/models:ro
+      # Mount LM Studio config for per-model settings (read-only)
+      - ${LMSTUDIO_CONFIG_DIR:-~/.lmstudio}:/root/.lmstudio:ro
+    # Use host network so the container can reach LM Studio server on localhost:1234
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    environment:
+      - LMSTUDIO_HOST=host.docker.internal
+    restart: unless-stopped

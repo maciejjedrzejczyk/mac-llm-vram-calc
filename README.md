@@ -37,7 +37,7 @@ The VRAM estimation features work with just the `lms` CLI or direct file scannin
 ## Quickstart
 
 ```bash
-git clone <repo-url> && cd vram-calculator
+git clone https://github.com/maciejjedrzejczyk/mac-llm-vram-calc && cd vram-calculator
 ./run.sh
 ```
 
