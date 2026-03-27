@@ -2,6 +2,8 @@
 
 Estimate memory requirements for running local LLMs on Apple Silicon, with integrated inference benchmarking via LM Studio.
 
+![Demo](screenshots/app.gif)
+
 ## Features
 
 **VRAM Estimation**
