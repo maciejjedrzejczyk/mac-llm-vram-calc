@@ -2,7 +2,10 @@
 
 Estimate memory requirements for running local LLMs on Apple Silicon, with integrated inference benchmarking via LM Studio.
 
+*Web UI (Streamlit)*
 ![Demo](screenshots/app.gif)
+
+*Terminal UI (curses)*
 ![TUI](screenshots/tui.png)
 
 ## Features
