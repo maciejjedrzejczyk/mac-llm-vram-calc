@@ -3,6 +3,7 @@
 Estimate memory requirements for running local LLMs on Apple Silicon, with integrated inference benchmarking via LM Studio.
 
 ![Demo](screenshots/app.gif)
+![TUI](screenshots/tui.jpg)
 
 ## Features
 
@@ -21,6 +22,13 @@ Estimate memory requirements for running local LLMs on Apple Silicon, with integ
 - Passive tracing of live conversations in LM Studio
 - Per-round statistics: tok/s, TTFT, generation time, token counts, VRAM growth
 - Topic presets (Q&A, Creative Writing, Coding, Reasoning) or custom prompts
+
+**Terminal UI (TUI)**
+- Curses-based interface — no browser required
+- Split-pane layout: scrollable model list + detailed VRAM breakdown
+- Interactive context length adjustment (←/→ to halve/double)
+- Color-coded memory fit indicator with headroom display
+- Max context sweet-spot finder per model
 
 **Model Support**
 - GGUF models (direct metadata parsing including MoE, RoPE, FFN fields)
@@ -54,6 +62,16 @@ streamlit run app.py
 
 Opens at [http://localhost:8501](http://localhost:8501).
 
+### Terminal UI
+
+For a lightweight terminal-only experience (no browser needed):
+
+```bash
+python3 tui.py
+```
+
+Use ↑/↓ to browse models, ←/→ to adjust context length, and `q` to quit.
+
 ### Docker
 
 ```bash
@@ -68,6 +86,7 @@ Requires LM Studio running on the host. The container mounts `~/.lmstudio` for m
 | File | Purpose |
 |---|---|
 | `app.py` | Streamlit UI — multi-page wizard, dashboard, benchmark |
+| `tui.py` | Curses-based terminal UI — model list, VRAM breakdown, fit indicator |
 | `benchmark.py` | Inference benchmarking — simulate, trace, model load/unload |
 | `gguf_scanner.py` | GGUF/MLX model scanning and metadata parsing |
 | `vram_calc.py` | VRAM estimation engine |
